@@ -86,7 +86,7 @@ const Home = () => {
 
   return (
     <div className="justify-center pb-5 text-sm bg-gray-800 min-h-screen">
-      <div className="scroll-container" ref={scrollContainerRef}>
+      <div className="scroll-container scrollbar-hide" ref={scrollContainerRef}>
         {popularMovies.map((movie) => (
           <div
             key={movie.id}
