@@ -1,38 +1,45 @@
 import React, { useState } from "react";
-import hamburger from "../assets/icons8-menu-bar.svg";
-import hamburger_active from "../assets/icons8-close.svg";
+import logo from "../assets/logo_abmovie.svg";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
 
+  const navigate = useNavigate();
+
   return (
-    <nav className="bg-gradient-to-r from-gray-400 to-red-700">
+    <nav className="bg-black">
       <div className="flex container mx-auto px-4 py-2 justify-between items-center lg:px-10">
         {/* ICON */}
         <div className="order-1 sm:order-2 lg:order-1">
-          <img className="cursor-pointer" src="/src/assets/.svg" />
+          <h1 className="font-bold text-center text-sm text-white">AbMovie</h1>
+          {/* <img className="cursor-pointer flex justify-center items-center h-7 w-7" src={logo} /> */}
         </div>
         {/* MENU */}
-        <div
-          className="order-2 sm:order-1 lg:hidden"
-          onClick={() => setToggleNavbar(toggleNavbar ? false : true)}>
-          <img
-            className="h-10 w-10 cursor-pointer"
-            src={toggleNavbar ? hamburger_active : hamburger}
-            alt="hamburger"
+        <div className="flex justify-center items-center order-2 sm:hidden lg:hidden">
+          <input
+            type="checkbox"
+            className="hamburger"
+            onClick={() => setToggleNavbar(toggleNavbar ? false : true)}
           />
         </div>
 
-        <div className="hidden lg:block lg:order-2">
-          <ul className="flex items-center gap-1 bg-red-700 border-2 border-gray-400 rounded-full text-white">
-            <li className="cursor-pointer rounded-full hover:text-red-700 hover:bg-gray-400 px-4 hover:font-bold">
+        <div className="hidden sm:block sm:order-2 lg:block lg:order-2">
+          <ul className="flex items-center gap-1  text-white">
+            <li
+              className="cursor-pointer rounded-md hover:text-black hover:bg-white px-4 hover:font-bold"
+              onClick={() => navigate("/")}>
               Home
             </li>
-            <li className="cursor-pointer rounded-full hover:text-red-700 hover:bg-gray-400 px-4 hover:font-bold">
-              Popular
+            <li
+              className="cursor-pointer rounded-md hover:text-black hover:bg-white px-4 hover:font-bold"
+              onClick={() => navigate("/pagemovie")}>
+              Movie
             </li>
-            <li className="cursor-pointer rounded-full hover:text-red-700 hover:bg-gray-400 px-4 hover:font-bold">
-              Genre
+            <li
+              className="cursor-pointer rounded-md hover:text-black hover:bg-white px-4 hover:font-bold"
+              onClick={() => navigate("/pagetv")}>
+              TV
             </li>
           </ul>
         </div>
@@ -46,7 +53,7 @@ const Navbar = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="absolute inset-y-0 my-auto h-12 w-12 border-r border-transparent 
-            stroke-black px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500"
+            stroke-white px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor">
@@ -60,15 +67,21 @@ const Navbar = () => {
       </div>
       {/* DROP MENU */}
       <div className={`${toggleNavbar ? "block" : "hidden"} lg:hidden`}>
-        <ul className="flex flex-col gap-1 font-kenia text-sm sm:text-lg bg-gradient-to-r from-red-700 to-gray-400">
-          <li className="cursor-pointer border-red-700 border-y-2 bg-gray-400 hover:text-white hover:bg-red-700 hover:border-gray-400 px-4">
+        <ul className="flex flex-col gap-1 font-kenia justify-center items-center text-white text-sm sm:text-lg bg-black">
+          <li
+            className="cursor-pointer justify-center items-center px-4"
+            onClick={() => navigate("/")}>
             Home
           </li>
-          <li className="cursor-pointer border-red-700 border-y-2 bg-gray-400 hover:text-white hover:bg-red-700 hover:border-gray-400 px-4">
-            Popular
+          <li
+            className="cursor-pointer justify-center items-center px-4"
+            onClick={() => navigate("/pagemovie")}>
+            Movie
           </li>
-          <li className="cursor-pointer border-red-700 border-y-2 bg-gray-400 hover:text-white hover:bg-red-700 hover:border-gray-400 px-4">
-            Genre
+          <li
+            className="cursor-pointer justify-center items-center px-4"
+            onClick={() => navigate("/pagetv")}>
+            TV
           </li>
         </ul>
       </div>
