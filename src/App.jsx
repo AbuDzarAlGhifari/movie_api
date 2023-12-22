@@ -3,16 +3,16 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeLama from "./pages/HomeLama";
-import DetailMovie from "./pages/DetailMovie";
+import DetailMovie from "./pages/movie/DetailMovie";
 import PageNotFound from "./pages/PageNotFound";
-import Movie from "./pages/Movie";
-import PopularMovie from "./pages/PopularMovie";
-import TopRaitingMovie from "./pages/TopRaitingMovie";
-import UpComingMovie from "./pages/UpComingMovie";
-import Tv from "./pages/Tv";
-import PopularTv from "./pages/PopularTv";
-import TopRaitingTv from "./pages/TopRaitingTv";
-import DetailTv from "./pages/DetailTv";
+import Movie from "./pages/movie/Movie";
+import PopularMovie from "./pages/movie/PopularMovie";
+import TopRaitingMovie from "./pages/movie/TopRaitingMovie";
+import UpComingMovie from "./pages/movie/UpComingMovie";
+import Tv from "./pages/tv/Tv";
+import PopularTv from "./pages/tv/PopularTv";
+import TopRaitingTv from "./pages/tv/TopRaitingTv";
+import DetailTv from "./pages/tv/DetailTv";
 import Footer from "./components/Footer";
 
 const App = () => {

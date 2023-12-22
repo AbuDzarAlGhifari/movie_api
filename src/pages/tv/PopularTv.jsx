@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CardTv from "../components/CardTv";
+import CardTv from "../../components/CardTv";
 
 const PopularTv = () => {
   const apiKey = import.meta.env.REACT_APP_APIKEY;
   const baseURL = import.meta.env.REACT_APP_BASEURL;
 
-
   const [popularTv, setPopularTv] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const getTvList = async (page) => {
     try {
@@ -17,6 +17,7 @@ const PopularTv = () => {
       );
       const limitedPopularTv = tv.data.results.slice(0, 12);
       setPopularTv(limitedPopularTv);
+      setTotalPages(tv.data.total_pages);
     } catch (error) {
       console.error("Error fetching popular Tv:", error);
     }
@@ -27,14 +28,15 @@ const PopularTv = () => {
   }, [currentPage]);
 
   const handlePageChange = (newPage) => {
+    newPage = Math.max(1, Math.min(newPage, totalPages));
     setCurrentPage(newPage);
   };
 
   return (
-    <div className="py-4 justify-center text-sm bg-gray-800 min-h-screen">
+    <div className="py-4 justify-center text-sm bg-gray-900 min-h-screen">
       <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white">
-        <h1 className="text-white font-poppins font-extrabold lg:text-2xl ">
-          Popular TV
+        <h1 className="text-white font-poppins font-extrabold lg:text-2xl">
+          POPULAR TV SERIES
         </h1>
       </div>
 
@@ -44,16 +46,19 @@ const PopularTv = () => {
         })}
       </div>
 
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center text-xs sm:text-lg lg:text-xl mt-4">
+        <p className="mr-4 text-white">
+          Page {currentPage} of {totalPages}
+        </p>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="mr-2 px-3 py-1 bg-gray-600 text-white hover:bg-white hover:text-gray-600 rounded-md">
+          className="mr-2 px-3 py-1 bg-gray-700 text-white hover:bg-gray-400 hover:text-gray-900 rounded-md">
           Previous
         </button>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
-          className="ml-2 px-3 py-1 bg-gray-600 text-white hover:bg-white hover:text-gray-600 rounded-md">
+          className="ml-2 px-3 py-1 bg-gray-700 text-white hover:bg-gray-400 hover:text-gray-900 rounded-md">
           Next
         </button>
       </div>

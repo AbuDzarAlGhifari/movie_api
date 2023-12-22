@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import CardTv from "../components/CardTv";
+import CardTv from "../../components/CardTv";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -36,13 +36,13 @@ const Tv = () => {
   }, []);
 
   return (
-    <div className="py-4 justify-center text-sm bg-gray-800 min-h-screen">
-      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins text-xs sm:text-sm lg:text-lg">
-        <h1>Popular Tv Series</h1>
+    <div className="py-4 justify-center text-sm bg-gray-900 min-h-screen">
+      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
+        <h1>POPULAR TV SERIES</h1>
         <h1
-          className="cursor-pointer underline text-yellow-300 hover:text-blue-400"
+          className="cursor-pointer underline italic text-red-700 hover:text-blue-500"
           onClick={() => navigate("/pagetv/popular")}>
-          Lainnya..
+          Others...
         </h1>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 mx-2 sm:mx-4">
@@ -51,12 +51,12 @@ const Tv = () => {
         })}
       </div>
 
-      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins text-xs sm:text-sm lg:text-lg">
-        <h1>Top Tv Series</h1>
+      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
+        <h1>TOP RAITING TV SERIES</h1>
         <h1
-          className="cursor-pointer underline text-yellow-300 hover:text-blue-400"
+          className="cursor-pointer underline italic text-red-700 hover:text-blue-500"
           onClick={() => navigate("/pagetv/top")}>
-          Lainnya..
+          Others...
         </h1>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 mx-2 sm:mx-4">

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Card from "../components/Card";
+import Card from "../../components/Card";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -47,13 +47,13 @@ const Movie = () => {
   }, []);
 
   return (
-    <div className="py-4 justify-center text-sm bg-gray-800 min-h-screen">
-      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins text-xs sm:text-sm lg:text-lg">
-        <h1>Popular Movie</h1>
+    <div className="py-4 justify-center text-sm bg-gray-900 min-h-screen">
+      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
+        <h1>POPULAR MOVIE</h1>
         <h1
-          className="cursor-pointer underline text-yellow-300 hover:text-blue-400"
+          className="cursor-pointer underline italic text-yellow-300 hover:text-blue-500"
           onClick={() => navigate("/pagemovie/popular")}>
-          Lainnya..
+          Others...
         </h1>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 mx-2 sm:mx-4">
@@ -62,12 +62,12 @@ const Movie = () => {
         })}
       </div>
 
-      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins text-xs sm:text-sm lg:text-lg">
-        <h1>Top Raiting Movie</h1>
+      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
+        <h1>TTOP RAITING MOVIE</h1>
         <h1
-          className="cursor-pointer underline text-yellow-300 hover:text-blue-400"
+          className="cursor-pointer underline italic text-yellow-300 hover:text-blue-500"
           onClick={() => navigate("/pagemovie/top")}>
-          Lainnya..
+          Others...
         </h1>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 mx-2 sm:mx-4">
@@ -76,12 +76,12 @@ const Movie = () => {
         })}
       </div>
 
-      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins text-xs sm:text-sm lg:text-lg">
-        <h1>Up Comming Movie</h1>
+      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
+        <h1>UP COMMING MOVIE</h1>
         <h1
-          className="cursor-pointer underline text-yellow-300 hover:text-blue-400"
+          className="cursor-pointer underline italic text-yellow-300 hover:text-blue-500"
           onClick={() => navigate("/pagemovie/up")}>
-          Lainnya..
+          Others...
         </h1>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 mx-2 sm:mx-4">

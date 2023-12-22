@@ -112,18 +112,10 @@ const DetailTv = () => {
                   </span>
                 ))}
             </li>
-            {/* <li className="">
-              <span># </span>
-              {detailTv.runtime && (
-                <span className="">{`${convertToHoursAndMinutes(
-                    detailTv.runtime
-                )}`}</span>
-              )}
-            </li> */}
             <li className="">
               <span># </span>
               {detailTv.vote_average && (
-                <span className="">{`⭐${formatRating(
+                <span className="text-red-700"> ★ { `${formatRating(
                   detailTv.vote_average
                 )}/10`}</span>
               )}
@@ -143,7 +135,7 @@ const DetailTv = () => {
               ? `${detailTv.overview}`
               : `${detailTv.overview}`?.substring(0, 160) + "..."}
             <button
-              className="font-semibold underline text-yellow-300 hover:text-blue-400"
+              className="font-semibold underline text-red-700 hover:text-blue-500"
               onClick={() => {
                 setShowMore(!showMore);
               }}>
@@ -170,7 +162,7 @@ const DetailTv = () => {
                 alt="youtube thumbnail"
               />
             </div>
-            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-white mt-1">
+            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-red-700 mt-1">
               {clipsTv.name}
             </p>
           </div>
@@ -201,7 +193,7 @@ const DetailTv = () => {
                 z-10"
               />
             </div>
-            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-white mt-1">
+            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-red-700 mt-1">
               {actor.name}
             </p>
           </div>
@@ -211,22 +203,32 @@ const DetailTv = () => {
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
         Recommended Tv Series
       </h1>
-      <div className="flex overflow-scroll scrollbar-hide snap-x pb-10 lg:mt-3 mx-2 sm:mx-3 md:mx-4 lg:mx-5">
+      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5">
         {recommendedTv.map((tv) => (
           <Link to={`/tv/${tv.id}`}>
             <div
-              className="w-24 sm:w-32 lg:w-48 cursor-pointer rounded-lg m-1 lg:m-3 transition-all"
+              className="w-24 sm:w-32 lg:w-48 cursor-pointer rounded-lg m-1 lg:m-3  text-xs sm:text-sm lg:text-lg p-0.5 hover:p-0 font-poppins text-red-700 hover:text-blue-500"
               key={tv.id}>
-              <div className="flex justify-center items-center">
+              <div className="flex relative">
+                <div className="absolute bg-black bg-opacity-50 text-red-700 text-[10px] sm:text-sm lg:text-lg rounded-lg pr-2">
+                  <span className="text-red-700 pl-1"> ★</span>{" "}
+                  {tv.vote_average}
+                </div>
                 <img
                   src={
                     tv.poster_path
                       ? `https://image.tmdb.org/t/p/original/${tv.poster_path}`
                       : "https://via.placeholder.com/150"
                   }
-                  alt={tv.name}
-                  className="rounded-xl sm:w-full lg:w-full h-36 sm:h-48 lg:h-72 p-1 hover:p-0"
+                  alt={tv.title}
+                  className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
+              </div>
+              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+                {tv.name}
+              </div>
+              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+                {tv.first_air_date}
               </div>
             </div>
           </Link>

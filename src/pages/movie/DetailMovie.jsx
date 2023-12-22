@@ -92,7 +92,7 @@ const DetailMovie = () => {
         alt="backdrop"
         className="w-full max-h-40 sm:max-h-[200px] md:max-h-[265px] lg:max-h-[450px] object-cover object-top opacity-25 absolute"
       />
-      <div className="sm:flex md:flex lg:flex pt-2">
+      <div className="sm:flex md:flex lg:flex p-2">
         <img
           src={`https://image.tmdb.org/t/p/original/${detailMovies.poster_path}`}
           alt="poster"
@@ -125,7 +125,7 @@ const DetailMovie = () => {
             <li className="">
               <span># </span>
               {detailMovies.vote_average && (
-                <span className="">{`⭐${formatRating(
+                <span className="text-yellow-300">{`⭐${formatRating(
                   detailMovies.vote_average
                 )}/10`}</span>
               )}
@@ -145,7 +145,7 @@ const DetailMovie = () => {
               ? `${detailMovies.overview}`
               : `${detailMovies.overview}`?.substring(0, 160) + "..."}
             <button
-              className="font-semibold underline text-yellow-300 hover:text-blue-400"
+              className="font-semibold underline text-yellow-300 hover:text-blue-500"
               onClick={() => {
                 setShowMore(!showMore);
               }}>
@@ -156,7 +156,7 @@ const DetailMovie = () => {
       </div>
 
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
-        Clips And Trailers
+        CLIPS AND TRAILERS
       </h1>
       <div className="flex overflow-scroll scrollbar-hide snap-x mx-4 lg:mx-8 mt-1 lg:mt-3">
         {clipsMovie.map((clipsMovie) => (
@@ -172,7 +172,7 @@ const DetailMovie = () => {
                 alt="youtube thumbnail"
               />
             </div>
-            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-white mt-1">
+            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-yellow-300 mt-1">
               {clipsMovie.name}
             </p>
           </div>
@@ -180,7 +180,7 @@ const DetailMovie = () => {
       </div>
 
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-8 lg:mt-16">
-        Top Cast
+        TOP CAST
       </h1>
       <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6">
         {cast.map((actor) => (
@@ -203,7 +203,7 @@ const DetailMovie = () => {
                 z-10"
               />
             </div>
-            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-white mt-1">
+            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-yellow-300 mt-1">
               {actor.name}
             </p>
           </div>
@@ -211,15 +211,18 @@ const DetailMovie = () => {
       </div>
 
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
-        Recommended Movies
+        RECOMMENDED MOVIE
       </h1>
-      <div className="flex overflow-scroll scrollbar-hide snap-x pb-10 lg:mt-3 mx-2 sm:mx-3 md:mx-4 lg:mx-5">
+      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 ">
         {recommendedMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`}>
             <div
-              className="w-24 sm:w-32 lg:w-48 cursor-pointer rounded-lg m-1 lg:m-3 transition-all"
+              className="w-24 sm:w-32 lg:w-48 cursor-pointer rounded-lg m-1 lg:m-3  text-xs sm:text-sm lg:text-lg p-0.5 hover:p-0 font-poppins text-yellow-300 hover:text-blue-500"
               key={movie.id}>
-              <div className="flex justify-center items-center">
+              <div className="flex relative">
+                <div className="absolute bg-black bg-opacity-50 text-yellow-300 text-[10px] sm:text-sm lg:text-lg rounded-lg pr-2">
+                  ⭐{movie.vote_average}
+                </div>
                 <img
                   src={
                     movie.poster_path
@@ -227,8 +230,14 @@ const DetailMovie = () => {
                       : "https://via.placeholder.com/150"
                   }
                   alt={movie.title}
-                  className="rounded-xl sm:w-full lg:w-full h-36 sm:h-48 lg:h-72 p-1 hover:p-0"
+                  className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
+              </div>
+              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+                {movie.title}
+              </div>
+              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+                {movie.release_date}
               </div>
             </div>
           </Link>
