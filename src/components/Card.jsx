@@ -16,10 +16,10 @@ const Card = ({ movie, i }) => {
           src={`${import.meta.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
         />
       </div>
-      <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+      <div className="cursor-pointer text-center px-1 text-[10.5px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
         {movie.title}
       </div>
-      <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+      <div className="cursor-pointer rounded-b-lg  text-center text-[9.5px] sm:text-[13px] lg:text-[17px] bg-black bg-opacity-50 ">
         {movie.release_date}
       </div>
     </Link>

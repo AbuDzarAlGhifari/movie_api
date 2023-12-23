@@ -101,33 +101,34 @@ const DetailTv = () => {
           <h1 className="font-bold sm:font-extrabold md:font-extrabold lg:font-extrabold font-poppins text-center sm:text-left lg:text-left text-sm sm:text-lg lg:text-3xl">
             {detailTv.name}
           </h1>
-          <ul className="flex font-poppins text-[9px] sm:text-sm lg:text-lg  text-gray-300 space-x-1 lg:space-x-2 justify-center sm:justify-normal lg:justify-normal">
+          <ul className="flex font-poppins text-[9px] sm:text-sm lg:text-lg text-gray-300 space-x-1 lg:space-x-2 justify-center sm:justify-normal lg:justify-normal">
             <li className="">{`# ${detailTv.first_air_date}`}</li>
             <li className="">
               <span># </span>
-              {detailTv.genres &&
-                detailTv.genres.map((genre) => (
-                  <span key={genre.id} className="">
-                    {genre.name},
-                  </span>
-                ))}
-            </li>
-            <li className="">
-              <span># </span>
               {detailTv.vote_average && (
-                <span className="text-red-700"> ★ { `${formatRating(
-                  detailTv.vote_average
-                )}/10`}</span>
+                <span className="text-red-700">
+                  {" "}
+                  ★ {`${formatRating(detailTv.vote_average)}/10`}
+                </span>
               )}
             </li>
           </ul>
+          <div className="flex justify-center sm:justify-normal gap-1">
+            {detailTv.genres &&
+              detailTv.genres.map((genre) => (
+                <span
+                  key={genre.id}
+                  className="bg-red-700 p-0.5 px-1.5 border-white  rounded-xl font-poppins font-semibold text-[9px] sm:text-sm lg:text-lg">
+                  # {genre.name}
+                </span>
+              ))}
+          </div>
           <h1 className="mt-2  font-poppins italic text-center sm:text-left lg:text-left">
             {detailTv.tagline}
           </h1>
           <div className="mt-2 mx-3 sm:mx-0 lg:mx-0 font-bold font-poppins text-sm">
             OverView
           </div>
-
           <h3
             style={style}
             className="mx-3 sm:mx-0 lg:mx-0 text-justify sm:mr-14 md:mr-16 lg:mr-20">
@@ -224,10 +225,10 @@ const DetailTv = () => {
                   className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
               </div>
-              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+              <div className="cursor-pointer text-center px-1 text-[10.5px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
                 {tv.name}
               </div>
-              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+              <div className="cursor-pointer rounded-b-lg  text-center text-[9.5px] sm:text-[13px] lg:text-[17px] bg-black bg-opacity-50 ">
                 {tv.first_air_date}
               </div>
             </div>

@@ -20,7 +20,7 @@ const Home = () => {
     const popular = await axios.get(
       `${baseURL}/movie/popular?page=1&api_key=${apiKey}`
     );
-    const limitedPopularMovie = popular.data.results.slice(0, 10);
+    const limitedPopularMovie = popular.data.results.slice(0, 16);
     setPopularMovies(limitedPopularMovie);
     console.log(limitedPopularMovie);
   };
@@ -86,7 +86,7 @@ const Home = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       scrollToNextPoster();
-    }, 8000);
+    }, 6500);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -104,10 +104,14 @@ const Home = () => {
               className="w-full h-full object-cover object-top opacity-30"
             />
             <div className="icon-container z-20">
-              <div className="icon" onClick={scrollToPreviousPoster}>
+              <div
+                className="cursor-pointer p-1  sm:px-2 ml-1 sm:ml-5 lg:ml-8 bg-black rounded-xl bg-opacity-30 hover:bg-opacity-70 text-gray-500 hover:text-white"
+                onClick={scrollToPreviousPoster}>
                 <FontAwesomeIcon icon={faArrowLeft} />
               </div>
-              <div className="icon" onClick={scrollToNextPoster}>
+              <div
+                className="cursor-pointer p-1 sm:px-2  mr-1 sm:mr-5 lg:mr-8 bg-black rounded-xl bg-opacity-30 hover:bg-opacity-70 text-gray-500 hover:text-white"
+                onClick={scrollToNextPoster}>
                 <FontAwesomeIcon icon={faArrowRight} />
               </div>
             </div>
@@ -167,10 +171,10 @@ const Home = () => {
                   className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
               </div>
-              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+              <div className="cursor-pointer text-center px-1 text-[10.5px] sm:text-[14px] lg:text-[18px] bg-black bg-opacity-50 truncate">
                 {tv.name}
               </div>
-              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+              <div className="cursor-pointer rounded-b-lg  text-center text-[9.5px] sm:text-[13px] lg:text-[17px] bg-black bg-opacity-50 ">
                 {tv.first_air_date}
               </div>
             </div>
@@ -206,10 +210,10 @@ const Home = () => {
                   className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
               </div>
-              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+              <div className="cursor-pointer text-center px-1 text-[10.5px] sm:text-[14px] lg:text-[18px] bg-black bg-opacity-50 truncate">
                 {movie.title}
               </div>
-              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+              <div className="cursor-pointer rounded-b-lg  text-center text-[9.5px] sm:text-[13px] lg:text-[17px] bg-black bg-opacity-50 ">
                 {movie.release_date}
               </div>
             </div>
@@ -246,10 +250,10 @@ const Home = () => {
                   className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
               </div>
-              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+              <div className="cursor-pointer text-center px-1 text-[10.5px] sm:text-[14px] lg:text-[18px] bg-black bg-opacity-50 truncate">
                 {tv.name}
               </div>
-              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+              <div className="cursor-pointer rounded-b-lg  text-center text-[9.5px] sm:text-[13px] lg:text-[17px] bg-black bg-opacity-50 ">
                 {tv.first_air_date}
               </div>
             </div>

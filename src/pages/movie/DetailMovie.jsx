@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import YouTube from "react-youtube";
 
 const DetailMovie = () => {
   const apiKey = import.meta.env.REACT_APP_APIKEY;
   const baseURL = import.meta.env.REACT_APP_BASEURL;
   const { movieId } = useParams();
+  const navigate = useNavigate();
+  const [player, setPlayer] = useState(null);
 
   const [detailMovies, setDetailMovies] = useState([]);
   const [clipsMovie, setClipsMovie] = useState([]);
@@ -78,6 +81,36 @@ const DetailMovie = () => {
     whiteSpace: "pre-line",
   };
 
+  const handleVideoClick = (videoKey) => {
+    if (player) {
+      // Get the current state of the player
+      const playerState = player.getPlayerState();
+
+      // If the video is paused or ended, play it
+      if (playerState === 2 || playerState === 0) {
+        player.playVideo();
+      } else {
+        // If the video is playing, pause it
+        player.pauseVideo();
+      }
+    }
+  };
+
+  const onReady = (event) => {
+    // Set the player reference when it's ready
+    setPlayer(event.target);
+  };
+
+  const opts = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+  
+
+
   useEffect(() => {
     getMovieList(movieId);
     getClips(movieId);
@@ -87,11 +120,17 @@ const DetailMovie = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen">
+      {/* <div className="flex absolute pt-5 mx-5 ">
+        <div className=" px-3 py-1 bg-gray-600 text-white hover:bg-white hover:text-gray-600 rounded-md z-50">
+          <button onClick={() => navigate(-1)}>Back</button>
+        </div>
+      </div> */}
       <img
         src={`https://image.tmdb.org/t/p/original/${detailMovies.backdrop_path}`}
         alt="backdrop"
         className="w-full max-h-40 sm:max-h-[200px] md:max-h-[265px] lg:max-h-[450px] object-cover object-top opacity-25 absolute"
       />
+
       <div className="sm:flex md:flex lg:flex p-2">
         <img
           src={`https://image.tmdb.org/t/p/original/${detailMovies.poster_path}`}
@@ -105,15 +144,6 @@ const DetailMovie = () => {
           </h1>
           <ul className="flex font-poppins text-[9px] sm:text-sm lg:text-lg  text-gray-300 space-x-1 lg:space-x-2 justify-center sm:justify-normal lg:justify-normal">
             <li className="">{`# ${detailMovies.release_date}`}</li>
-            <li className="">
-              <span># </span>
-              {detailMovies.genres &&
-                detailMovies.genres.map((genre) => (
-                  <span key={genre.id} className="">
-                    {genre.name},
-                  </span>
-                ))}
-            </li>
             <li className="">
               <span># </span>
               {detailMovies.runtime && (
@@ -131,6 +161,16 @@ const DetailMovie = () => {
               )}
             </li>
           </ul>
+          <div className="flex justify-center sm:justify-normal gap-1">
+            {detailMovies.genres &&
+              detailMovies.genres.map((genre) => (
+                <span
+                  key={genre.id}
+                  className="bg-yellow-300 p-0.5 px-1.5 border-white rounded-xl font-poppins text-black font-semibold text-[9px] sm:text-sm lg:text-lg">
+                  # {genre.name},
+                </span>
+              ))}
+          </div>
           <h1 className="mt-2  font-poppins italic text-center sm:text-left lg:text-left">
             {detailMovies.tagline}
           </h1>
@@ -156,7 +196,7 @@ const DetailMovie = () => {
       </div>
 
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
-        CLIPS AND TRAILERS
+        Clips And Trailers
       </h1>
       <div className="flex overflow-scroll scrollbar-hide snap-x mx-4 lg:mx-8 mt-1 lg:mt-3">
         {clipsMovie.map((clipsMovie) => (
@@ -172,7 +212,7 @@ const DetailMovie = () => {
                 alt="youtube thumbnail"
               />
             </div>
-            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-yellow-300 mt-1">
+            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-yellow-400 mt-1">
               {clipsMovie.name}
             </p>
           </div>
@@ -180,7 +220,7 @@ const DetailMovie = () => {
       </div>
 
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-8 lg:mt-16">
-        TOP CAST
+        Top Cast
       </h1>
       <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6">
         {cast.map((actor) => (
@@ -211,7 +251,7 @@ const DetailMovie = () => {
       </div>
 
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
-        RECOMMENDED MOVIE
+        Recommended Tv Series
       </h1>
       <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 ">
         {recommendedMovies.map((movie) => (
@@ -233,10 +273,10 @@ const DetailMovie = () => {
                   className="rounded-t-lg sm:w-full lg:w-full h-36 sm:h-48 lg:h-80"
                 />
               </div>
-              <div className="cursor-pointer text-center px-1 text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
+              <div className="cursor-pointer text-center px-1 text-[10.5px] sm:text-sm lg:text-lg bg-black bg-opacity-50 truncate">
                 {movie.title}
               </div>
-              <div className="cursor-pointer rounded-b-lg  text-center text-[10px] sm:text-sm lg:text-lg bg-black bg-opacity-50 ">
+              <div className="cursor-pointer rounded-b-lg  text-center text-[9.5px] sm:text-[13px] lg:text-[17px] bg-black bg-opacity-50 ">
                 {movie.release_date}
               </div>
             </div>

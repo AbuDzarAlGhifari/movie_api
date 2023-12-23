@@ -9,12 +9,24 @@ export const getMovieList = async() => {
     return movie.data.results
 }
 
-export const searchMovie = async(q) => {
-    const search = await axios.get(
-        `${baseURL}/search/movie?query=${q}&page=1&api_key=${apiKey}`
-    )
-    return search.data
-}
+// export const searchMovie = async(q) => {
+//     const search = await axios.get(
+//         `${baseURL}/search/movie?query=${q}&page=1&api_key=${apiKey}`
+//     )
+//     return search.data
+// }
+
+export const searchMovies = async (query) => {
+    try {
+      const response = await axios.get(
+        `${baseURL}/search/movie?api_key=${apiKey}&query=${query}`
+      );
+      return response.data.results;
+    } catch (error) {
+      console.error("Error searching movies:", error);
+      throw error;
+    }
+  };
 
 
 

@@ -6,6 +6,7 @@ const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
 
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <nav className="bg-black">
@@ -45,25 +46,24 @@ const Navbar = () => {
         </div>
         {/* SEARCH */}
         <div className="hidden sm:block order-3">
-          <form action="" className="relative">
-            <input
-              className="cursor-pointer relative z-10 h-8 w-8 rounded-full border bg-transparent 
-            outline-none border-transparent focus:w-full focus:cursor-text focus:pl-4 focus:pr-4 focus:bg-slate-200"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute inset-y-0 my-auto h-12 w-12 border-r border-transparent 
-            stroke-white px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                stroke="round"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </form>
-        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate(`/search?query=${searchQuery}`);
+          }}
+          className="relative"
+        >
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search film..."
+            className="cursor-pointer bg-white relative z-10 h-8 pl-4 pr-4 rounded-full border bg-transparent 
+              outline-none border-transparent w-full focus:cursor-text focus:bg-slate-200"
+          />
+        </form>
+      </div>
+
       </div>
       {/* DROP MENU */}
       <div className={`${toggleNavbar ? "block" : "hidden"} lg:hidden`}>
