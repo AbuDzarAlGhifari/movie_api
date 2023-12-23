@@ -51,7 +51,7 @@ const Tv = () => {
         })}
       </div>
 
-      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
+      <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3 pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
         <h1>TOP RAITING TV SERIES</h1>
         <h1
           className="cursor-pointer underline italic text-red-700 hover:text-blue-500"

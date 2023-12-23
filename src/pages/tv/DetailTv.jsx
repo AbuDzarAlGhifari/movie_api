@@ -118,7 +118,7 @@ const DetailTv = () => {
               detailTv.genres.map((genre) => (
                 <span
                   key={genre.id}
-                  className="bg-red-700 p-0.5 px-1.5 border-white  rounded-xl font-poppins font-semibold text-[9px] sm:text-sm lg:text-lg">
+                  className="bg-red-700 p-0.5 px-1 rounded-xl font-poppins  font-semibold text-[7px] sm:text-sm lg:text-lg">
                   # {genre.name}
                 </span>
               ))}
@@ -204,7 +204,7 @@ const DetailTv = () => {
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
         Recommended Tv Series
       </h1>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5">
+      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 pb-4">
         {recommendedTv.map((tv) => (
           <Link to={`/tv/${tv.id}`}>
             <div

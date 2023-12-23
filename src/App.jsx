@@ -2,7 +2,6 @@ import React from "react";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomeLama from "./pages/HomeLama";
 import DetailMovie from "./pages/movie/DetailMovie";
 import PageNotFound from "./pages/PageNotFound";
 import Movie from "./pages/movie/Movie";
@@ -29,7 +28,6 @@ const App = () => {
         <Route path="/pagetv" element={<Tv />} />
         <Route path="/pagetv/popular" element={<PopularTv />} />
         <Route path="/pagetv/top" element={<TopRaitingTv />} />
-        {/* <Route path="/tes" element={<HomeLama />} /> */}
         <Route path="/movie/:movieId" element={<DetailMovie />} />
         <Route path="/tv/:tvId" element={<DetailTv />} />
         <Route path="/search" element={<Search />} />

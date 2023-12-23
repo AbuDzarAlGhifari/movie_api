@@ -101,7 +101,7 @@ const Home = () => {
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               alt="backdrop"
-              className="w-full h-full object-cover object-top opacity-30"
+              className="w-full h-full object-cover object-top opacity-60"
             />
             <div className="icon-container z-20">
               <div
@@ -119,23 +119,16 @@ const Home = () => {
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt="poster"
-                className="rounded-xl mx-4 sm:mx-6 md:mx-8 lg:mx-10 sm:my-3 my:mt-5 lg:my-10 w-24 sm:w-32 md:w-36 lg:w-56 z-10"
+                className="rounded-lg mx-4 sm:mx-6 md:mx-8 lg:mx-10 sm:my-3 my:mt-5 lg:my-10 w-24 sm:w-32 md:w-36 lg:w-56 z-10"
               />
-              <div className="z-20 mr-8 ml-1 sm:ml-2 md:ml-3 lg:ml-4 mt-3 sm:mt-6 md:mt-9 lg:mt-12 text-white text-xs sm:text-sm lg:text-lg truncate">
-                <h1 className="font-bold sm:font-extrabold md:font-extrabold lg:font-extrabold font-poppins text-left text-sm sm:text-lg lg:text-3xl">
+              <div className="z-20 mr-8 ml-1 sm:ml-2 md:ml-3 lg:ml-4 mt-3 sm:mt-6 md:mt-9 lg:mt-12 text-white truncate">
+                <h1 className="font-bold sm:font-extrabold md:font-extrabold lg:font-extrabold font-poppins text-left text-xl sm:text-lg lg:text-3xl">
                   {movie.title}
                 </h1>
-                <ul className="flex font-poppins text-[9px] sm:text-sm lg:text-lg  text-gray-300 space-x-1 lg:space-x-2">
-                  <li className="">{`# ${movie.release_date}`}</li>
-                  <li className="">
-                    <span># </span>
-                    {movie.vote_average && (
-                      <span className="">{`⭐${formatRating(
-                        movie.vote_average
-                      )}/10`}</span>
-                    )}
-                  </li>
-                </ul>
+                <div className="font-poppins font-bold sm:font-extrabold md:font-extrabold lg:font-extrabold italic text-xs sm:text-sm lg:text-lg  text-gray-300 space-x-1 lg:space-x-2">{`${movie.release_date}`}</div>
+                <div className=" text-yellow-300 text-[10px] sm:text-sm lg:text-lg rounded-lg z-50">
+                  ⭐{movie.vote_average}
+                </div>
               </div>
             </div>
           </div>

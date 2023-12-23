@@ -120,11 +120,6 @@ const DetailMovie = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen">
-      {/* <div className="flex absolute pt-5 mx-5 ">
-        <div className=" px-3 py-1 bg-gray-600 text-white hover:bg-white hover:text-gray-600 rounded-md z-50">
-          <button onClick={() => navigate(-1)}>Back</button>
-        </div>
-      </div> */}
       <img
         src={`https://image.tmdb.org/t/p/original/${detailMovies.backdrop_path}`}
         alt="backdrop"
@@ -161,26 +156,26 @@ const DetailMovie = () => {
               )}
             </li>
           </ul>
-          <div className="flex justify-center sm:justify-normal gap-1">
+          <div className="flex justify-center sm:justify-normal gap-0.5 sm:gap-1">
             {detailMovies.genres &&
               detailMovies.genres.map((genre) => (
                 <span
                   key={genre.id}
-                  className="bg-yellow-300 p-0.5 px-1.5 border-white rounded-xl font-poppins text-black font-semibold text-[9px] sm:text-sm lg:text-lg">
-                  # {genre.name},
+                  className="bg-yellow-300 p-0.5 px-1 border-white rounded-xl font-poppins text-black font-semibold text-[7px] sm:text-sm lg:text-lg">
+                  # {genre.name}
                 </span>
               ))}
           </div>
           <h1 className="mt-2  font-poppins italic text-center sm:text-left lg:text-left">
             {detailMovies.tagline}
           </h1>
-          <div className="mt-2 mx-3 sm:mx-0 lg:mx-0 font-bold font-poppins text-sm">
+          <div className="mt-2 mx-1 sm:mx-0 lg:mx-0 font-bold font-poppins text-sm">
             OverView
           </div>
 
           <h3
             style={style}
-            className="mx-3 sm:mx-0 lg:mx-0 text-justify sm:mr-14 md:mr-16 lg:mr-20">
+            className="mx-1 sm:mx-0 lg:mx-0 text-justify sm:mr-14 md:mr-16 lg:mr-20">
             {showMore
               ? `${detailMovies.overview}`
               : `${detailMovies.overview}`?.substring(0, 160) + "..."}
@@ -201,18 +196,18 @@ const DetailMovie = () => {
       <div className="flex overflow-scroll scrollbar-hide snap-x mx-4 lg:mx-8 mt-1 lg:mt-3">
         {clipsMovie.map((clipsMovie) => (
           <div
-            className="mr-5"
+            className="mr-5 text-yellow-400 hover:text-blue-400"
             onClick={() => {
               window.open(`https://youtube.com/watch?v=${clipsMovie.key}`);
             }}>
             <div className="relative flex-shrink-0 h-[110px] sm:h-[150px] md:h-[180px] lg:h-[250px] aspect-video rounded-xl">
               <img
                 src={`https://img.youtube.com/vi/${clipsMovie.key}/hqdefault.jpg`}
-                className="absolute object-cover h-[110px] sm:h-[150px] md:h-[180px] lg:h-[250px] aspect-video rounded-xl "
+                className="absolute object-cover h-[110px] sm:h-[150px] md:h-[180px] lg:h-[250px] aspect-video rounded-xl opacity-75 hover:opacity-100"
                 alt="youtube thumbnail"
               />
             </div>
-            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins text-yellow-400 mt-1">
+            <p className="text-[10px] sm:text-sm lg:text-xl text-center font-poppins mt-1">
               {clipsMovie.name}
             </p>
           </div>
@@ -253,7 +248,7 @@ const DetailMovie = () => {
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
         Recommended Tv Series
       </h1>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 ">
+      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 pb-4">
         {recommendedMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`}>
             <div
