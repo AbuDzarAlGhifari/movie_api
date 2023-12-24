@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import logo from "../assets/logo_abmovie.svg";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate("");
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -18,7 +17,6 @@ const Navbar = () => {
             onClick={() => navigate("/")}>
             <span className="text-red-700 font-poppins">AB</span>movie
           </h1>
-          {/* <img className="cursor-pointer flex justify-center items-center h-7 w-7" src={logo} /> */}
           <div className=" hidden sm:block">
             <ul className="flex justify-center items-center gap-1 pl-6 text-white ">
               <li
@@ -65,19 +63,22 @@ const Navbar = () => {
       {/* DROP MENU */}
       <div className={`${toggleNavbar ? "block" : "hidden"} lg:hidden`}>
         <ul className="flex flex-col gap-1 font-poppins text-white text-xs sm:text-lg bg ">
-          {/* <li
-            className="cursor-pointer px-4 hover:text-blue-500"
-            onClick={() => navigate("/")}>
-            Home
-          </li> */}
           <li
-            className="cursor-pointer px-4 hover:text-blue-500"
-            onClick={() => navigate("/pagemovie")}>
+            className="cursor-pointer px-4 hover:text-blue-500 hover:bg-gray-900"
+            onClick={() =>
+              `${navigate("/pagemovie")}, ${setToggleNavbar(
+                toggleNavbar ? false : true
+              )}`
+            }>
             Movie
           </li>
           <li
-            className="cursor-pointer px-4 hover:text-blue-500"
-            onClick={() => navigate("/pagetv")}>
+            className="cursor-pointer px-4 hover:text-blue-500 hover:bg-gray-900"
+            onClick={() =>
+              `${navigate("/pagetv")}, ${setToggleNavbar(
+                toggleNavbar ? false : true
+              )}`
+            }>
             TV
           </li>
         </ul>
