@@ -47,7 +47,7 @@ const Movie = () => {
   }, []);
 
   return (
-    <div className="py-4 justify-center text-sm bg-gray-900 min-h-screen">
+    <div className="py-4  justify-center text-sm bg-gray-900 min-h-screen">
       <div className="flex mx-2 sm:mx-4 mt-1 sm:mt-2 lg:mt-3  pt-4 px-4 justify-between text-white font-poppins font-bold text-xs sm:text-sm lg:text-lg">
         <h1>POPULAR MOVIE</h1>
         <h1

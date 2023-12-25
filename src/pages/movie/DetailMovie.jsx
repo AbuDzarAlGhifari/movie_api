@@ -119,7 +119,7 @@ const DetailMovie = () => {
   }, [movieId]);
 
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-gray-900 pb-6 sm:pb-4 min-h-screen">
       <img
         src={`https://image.tmdb.org/t/p/original/${detailMovies.backdrop_path}`}
         alt="backdrop"
@@ -193,7 +193,7 @@ const DetailMovie = () => {
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
         Clips And Trailers
       </h1>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-4 lg:mx-8 mt-1 lg:mt-3">
+      <div className="flex overflow-scroll overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-black snap-x mx-4 lg:mx-8 mt-1 lg:mt-3">
         {clipsMovie.map((clipsMovie) => (
           <div
             className="mr-5 text-yellow-400 hover:text-blue-400"
@@ -248,7 +248,7 @@ const DetailMovie = () => {
       <h1 className="text-white font-semibold font-poppins text-sm sm:text-lg lg:text-2xl mx-4 sm:mx-6 lg:mx-8 mt-4 sm:mt-10 lg:mt-16">
         Recommended Tv Series
       </h1>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 pb-4">
+      <div className="flex overflow-scroll overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-black snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5">
         {recommendedMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`}>
             <div

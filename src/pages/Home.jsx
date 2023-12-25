@@ -29,7 +29,7 @@ const Home = () => {
     const top = await axios.get(
       `${baseURL}/movie/top_rated?page=1&api_key=${apiKey}`
     );
-    const limitedTopMovie = top.data.results.slice(0, 10);
+    const limitedTopMovie = top.data.results.slice(0, 14);
     setTopMovie(limitedTopMovie);
     // console.log(movie.data.results);
   };
@@ -38,7 +38,7 @@ const Home = () => {
     const popular = await axios.get(
       `${baseURL}/tv/popular?page=1&api_key=${apiKey}`
     );
-    const limitedPopularTv = popular.data.results.slice(0, 10);
+    const limitedPopularTv = popular.data.results.slice(0, 14);
     setPopularTv(limitedPopularTv);
     // console.log(limitedPopularTv);
   };
@@ -47,7 +47,7 @@ const Home = () => {
     const popular = await axios.get(
       `${baseURL}/tv/top_rated?page=1&api_key=${apiKey}`
     );
-    const limitedTopTv = popular.data.results.slice(0, 10);
+    const limitedTopTv = popular.data.results.slice(0, 14);
     setTopTv(limitedTopTv);
     // console.log(limitedPopularTv);
   };
@@ -143,7 +143,7 @@ const Home = () => {
           Others...
         </h1>
       </div>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 lg:mb-4">
+      <div className="flex overflow-scroll overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-black snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 lg:mb-4">
         {popularTv.map((tv) => (
           <Link to={`/tv/${tv.id}`}>
             <div
@@ -183,7 +183,7 @@ const Home = () => {
           Others...
         </h1>
       </div>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 lg:mb-4">
+      <div className="flex overflow-scroll overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-black snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 lg:mb-4">
         {topMovie.map((movie) => (
           <Link to={`/movie/${movie.id}`}>
             <div
@@ -222,7 +222,7 @@ const Home = () => {
           Others...
         </h1>
       </div>
-      <div className="flex overflow-scroll scrollbar-hide snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 lg:mb-4">
+      <div className="flex overflow-scroll overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-black snap-x mx-2 sm:mx-3 md:mx-4 lg:mx-5 lg:mb-4">
         {topTv.map((tv) => (
           <Link to={`/tv/${tv.id}`}>
             <div
